@@ -1,0 +1,17 @@
+public class Main {
+    public static void main(String[] args) {
+        int sum = 0;
+        Scanner scan = new Scanner(System.in);
+        int[] masyv = new int[15];
+        System.out.println("Введіть 15 значень масиву:");
+
+        for (int x=0; x<masyv.length; x++) {
+          masyv[x]= scan.nextInt();
+          if (masyv[x] !=' ') {
+              sum += masyv[x];
+          }
+          else {System.out.println(sum);}
+        }
+        System.out.println(sum);
+    }
+}
