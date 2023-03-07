@@ -9,8 +9,10 @@ public class Main {
         System.out.println("Введіть 15 значень масиву:");
 
         for (int x=0; x<masyv.length; x++) {
-          masyv[x]= scan.nextInt();
-          sum += masyv[x];
+            String valueFromScanner = scan.nextLine(); // читаємо введення від користувача, в тому числі пустий рядок
+            if (valueFromScanner.isBlank()) break; // перевіряємо, чи відправив щось користувач
+            masyv[i] = Integer.parseInt(valueFromScanner); // перетворюємо рядок в число
+            sum += masyv[i];
         }
         System.out.println(sum);
     }
