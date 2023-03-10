@@ -1,0 +1,166 @@
+public class Main {
+    public static void main(String[] args) {
+        Professor professorAlex = new Professor("Alex", "Brown", 11);
+        String mail = professorAlex.mail("Hello, students!");
+        System.out.println(mail);
+
+        Student studentNick = new Student("Nick", "Black", 311, 3 );
+        mail = studentNick.mail("Hello, professor Alex!");
+        System.out.println(mail);
+
+        studentNick.setGroup(56);
+        System.out.println(studentNick.getGroup());
+
+        mail = professorAlex.mail("Who are you?", "Black");
+        System.out.println(mail);
+
+        mail = professorAlex.mail(5, "Black");
+        System.out.println(mail);
+
+
+    }
+}
+________________________________________
+public class User {
+    private String name;
+    private String surname;
+
+    public User(String name, String surname) {
+        this.name = name;
+        this.surname = surname;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    String mail(String message) {
+        return name + ": " + message;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
+    }
+}
+
+______________________________________
+public class Student extends User {
+
+    private int group;
+    private int year;
+
+    Student(String name, String surname, int group, int year) {
+        super (name, surname);
+        this.group = group;
+        this.year = year;
+    }
+
+    @Override
+    public String getName() {
+        System.out.print("Student`s name is: ");
+        return super.getName();
+    }
+
+    @Override
+    public void setName(String name) {
+        super.setName(name);
+        System.out.println("Student added new info about name.");
+    }
+    @Override
+    public String getSurname() {
+        System.out.print("Student`s surname is: ");
+        return super.getSurname().charAt(0) +".";
+    }
+
+    @Override
+    public void setSurname(String surname) {
+        super.setSurname(surname);
+        System.out.println("Student added new info about surname.");
+    }
+
+    public int getGroup() {
+        System.out.print("Group number is: ");
+        return group;
+    }
+
+    public void setGroup(int group) {
+        this.group = group;
+        System.out.println("Student added new info about group #.");
+    }
+
+    public int getYear() {
+        System.out.print("Year of Study is: ");
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+        System.out.println("Student added new info about year of study.");
+    }
+    @Override
+    String mail(String message) {
+        return "Student " + super.getName() + ": " + message;
+    }
+
+
+}
+_________________________________
+
+public class Professor extends User {
+
+    private int experience;
+    private int msgSent;
+
+    Professor (String name, String surname, int experience) {
+        super (name, surname);
+        this.experience = experience;
+        msgSent =0;
+    }
+
+    @Override
+    String mail(String message) {
+        msgSent++;
+        return "Professor " + super.getName() + " sent " + this.getMsgSent() + "th" + " message: " + message;
+    }
+    String mail(String message, String studentSurname) {
+        msgSent ++;
+        return "Professor " + super.getName() + " send to " + studentSurname + ": " + message;
+    }
+    String mail(double mark, String studentSurname) {
+        msgSent ++;
+        return "Professor " + super.getName() + " put the mark " + studentSurname + ": " + mark;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
+
+    public int getMsgSent() {
+        return msgSent;
+    }
+}
+
+
+
+
+
