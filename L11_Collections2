@@ -9,15 +9,14 @@ public class Main {
         while (true) {
         System.out.print("Enter your full name: ");
         String fullName = scan.nextLine();
-        System.out.print("Enter your residence: ");
-        String residence = scan.nextLine();
-            if (fullName.equals("")||fullName.equalsIgnoreCase("stop")
-                    ||residence.equals("")||residence.equalsIgnoreCase("stop")) {
-                break;
-            }
-            else {
-                residenceMap.put(fullName, residence);
-            }
+        if (fullName.equals("")||fullName.equalsIgnoreCase("stop")) break;
+        else {
+            System.out.print("Enter your residence: ");
+            String residence = scan.nextLine();
+                if (residence.equals("")||residence.equalsIgnoreCase("stop")) break;
+                else {
+                    residenceMap.put(fullName, residence);
+                }
         }
         System.out.println(residenceMap);
     }
