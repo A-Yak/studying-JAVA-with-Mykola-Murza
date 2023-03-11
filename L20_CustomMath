@@ -1,0 +1,36 @@
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+
+        System.out.println(CustomMath.plus(2,3));
+        System.out.println(CustomMath.plus(2.5,3.6));
+        System.out.println(CustomMath.minus(2,3));
+        System.out.println(CustomMath.minus(2.5,3.6));
+        System.out.println(CustomMath.pow(3,3));
+
+    }
+}
+_____________________________________
+
+public class CustomMath {
+    static int plus (int a, int b) {
+        return a+b;
+    }
+    static double plus (double a, double b) {
+        return a+b;
+    }
+    static int minus (int a, int b) {
+        return a-b;
+    }
+    static double minus (double a, double b) {
+        return a-b;
+    }
+    static int pow (int a, int b) {
+        int result=1;
+        for (int i = 0; i < b ; i++) {
+            result *= a;
+        }
+        return result;
+
+    }
+}
