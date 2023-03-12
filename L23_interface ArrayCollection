@@ -1,0 +1,104 @@
+public interface ArrayCollection {
+    void add(int element); // додати елемент
+    int get(int index); // знайти елемент за індексом
+    void remove(int index); // видалити за індексом
+    int findIndex(int element); // знайти індекс елементу
+    boolean contains(int element); // перевірити, чи є такий елемент в масиві/колекції.
+    int size(); // повернути розмір колекції.
+}
+__________________________________________________________
+
+public class ArrayHomework implements ArrayCollection {
+    private int [] array;
+    private int size;
+
+    public ArrayHomework() {
+        this.array = new int[10];
+        this.size = 0;
+    }
+
+    @Override
+    public void add(int element) {
+        if (array.length == size) {
+            int[] newArr = new int[(int) (array.length * 1.5)];
+            System.arraycopy(array, 0, newArr, 0, array.length);
+            array = newArr;
+        }
+        array[size] = element;
+        size++;
+    }
+
+    @Override
+    public int get(int index) {
+        if (index >= size) throw new IndexOutOfBoundsException("index > size");
+        return array[index];
+    }
+
+    @Override
+    public void remove(int index) {
+        if (index >= size) throw new IndexOutOfBoundsException("index > size");
+        size--;
+        for (int i = index; i < array.length - 1; i++) {
+            array[i] = array[i + 1];
+        }
+    }
+
+    @Override
+    public int findIndex (int element) {
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] == element) return i;
+            }
+
+            return -1;
+    }
+
+    @Override
+    public boolean contains(int element) {
+            return findIndex(element) != -1;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+}
+_____________________________________________________
+
+public class Main {
+    public static void main(String[] args) {
+
+        ArrayCollection testArray = new ArrayHomework();
+        System.out.println(testArray.size());
+        testArray.add(9);
+        testArray.add(8);
+        testArray.add(7);
+        testArray.add(6);
+        testArray.add(5);
+
+        System.out.println(testArray.get(1));
+        System.out.println(testArray.size());
+
+        System.out.println(testArray.contains(9));
+        System.out.println(testArray.contains(3));
+
+        System.out.println(testArray.findIndex(7));
+        System.out.println(testArray.findIndex(2));
+
+        testArray.add(90);
+        testArray.add(80);
+        testArray.add(70);
+        testArray.add(60);
+        testArray.add(50);
+
+        System.out.println(testArray.size());
+        System.out.println(testArray.get(7));
+
+        testArray.add(30);
+        System.out.println(testArray.size());
+        System.out.println(testArray.get(7));
+        testArray.remove(7);
+        System.out.println(testArray.get(7));
+        System.out.println(testArray.size());
+
+    }
+}
